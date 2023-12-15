@@ -1,6 +1,6 @@
 import React from 'react'
-import "./ProductCard.css"
-const ProductCard = ({id, title, image, price}) => {
+import "./Product.css"
+const Product = ({id, title, image, price}) => {
   return (
 
       <div className="col">
@@ -22,5 +22,5 @@ const ProductCard = ({id, title, image, price}) => {
   );
 }
 
-export default ProductCard
+export default Product
 
