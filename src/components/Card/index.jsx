@@ -1,46 +1,16 @@
-import React from 'react'
+import ProductCard from "./ProductCard";
+import {products} from "../../data";
 
-function Card() {
+function ProductList() {
+ 
   return (
-   <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <image src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
+    <div className="products row row-cols-1 row-cols-md-3 row-cols-lg-4 my-5 g-4">
+      {products.map((item) => (
+        <ProductCard key={item.id} id={item.id} title={item.title} image={item.image} price={item.price} />
+      ))}
+      
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <image src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <image src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <image src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-  )
+  );
 }
 
-export default Card;
+export default ProductList;
