@@ -35,10 +35,7 @@ const User = ({
               <td>
                 <button
                   type="button"
-                  className="btn btn-dark m-2 float-end"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#exampleModal"
-                  onClick={() => this.addClick()}
+                  className="btn btn-dark m-2 float-center btn-md"
                 >
                   Add
                 </button>
@@ -46,10 +43,7 @@ const User = ({
               <td>
                 <button
                   type="button"
-                  className="btn btn-dark  m-2 float-end"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#exampleModal"
-                  onClick={() => this.addClick()}
+                  className="btn   m-2 float-center btn-info btn-md"
                 >
                   Edit
                 </button>
@@ -57,10 +51,7 @@ const User = ({
               <td>
                 <button
                   type="button"
-                  className="btn btn-danger m-2 float-cen"
-                  // data-bs-toggle="modal"
-                  // data-bs-target="#exampleModal"
-                  onClick={() => this.addClick()}
+                  className="btn btn-danger m-2 float-center btn-sm"
                 >
                   Delete
                 </button>

@@ -1,4 +1,4 @@
-js ===> web front ===> browser
+<!-- js ===> web front ===> browser
 
 2009: nodejs ===> web back
 2012: reactjs, vuejs, angularjs ===> web front
@@ -7,20 +7,47 @@ js ===> web front ===> browser
 
 <input type="text" placeholder="Email" name="email" id="email-1">
 
-<input type="text">
+<input type="text"> -->
 
 <body>
-    
+    <h1 id="result"></h1>
 </body>
 
 <script>
-    const input = {
-        type: "text",
-        placeholder: "Email",
-        name: "email",
-        id: "email-1"
+    // const input = {
+    //     type: "text",
+    //     placeholder: "Email",
+    //     name: "email",
+    //     id: "email-1"
+    // }
+
+    // console.log(input.type);
+    // console.log(input.title);
+
+    ///////// sync ////////////
+    // 1. callback
+    // 2. Promise
+    // 3. async await
+
+    function func1(result) {
+        document.querySelector("#result").innerText = result
     }
 
-    console.log(input.type);
-    console.log(input.title);
+    function func2(x, y, cb) {
+
+        setTimeout(() => {
+            sum = x + y
+            cb(sum)
+        }, 3000);
+    }
+    // console.log(func1);
+    // console.log(func1("ttt"));
+
+    /// async
+    // const rslt = func2(20, 60)
+    // func1(rslt)
+
+    //////  sync
+    func2(20, 60, func1)
+
 </script>
