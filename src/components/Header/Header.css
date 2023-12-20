@@ -16,6 +16,7 @@ ul.dropdown-cart li .item:after{
     content: " ";
     clear: both;
     height: 0;
+    
 }
 
 ul.dropdown-cart li .item-left{

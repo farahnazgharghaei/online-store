@@ -1,10 +1,10 @@
 import React from "react";
 import ProductList from "../components/Product";
 
-const HomePage = () => {
+const HomePage = ({ handelTotalQty }) => {
   return (
     <div className="container">
-      <ProductList />
+      <ProductList handelTotalQty={handelTotalQty} />
     </div>
   );
 };

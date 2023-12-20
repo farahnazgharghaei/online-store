@@ -5,15 +5,24 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import UserPage from "./pages/UserPage";
+import { useState } from "react";
 
 function App() {
   const links = ["Home", "login", "Signup", "User"];
+const [totalQty, settotalQty] = useState(0)
+  
+const handelTotalQty = () => {
+  settotalQty(totalQty + 1);
+};
   // //js + xml
   return (
     <BrowserRouter>
-      <Header logo="Brand" />
+      <Header logo="Brand" totalQty={totalQty} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={<HomePage handelTotalQty={handelTotalQty} />}
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/user" element={<UserPage />} />
