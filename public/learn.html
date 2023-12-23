@@ -29,25 +29,40 @@
     // 2. Promise
     // 3. async await
 
-    function func1(result) {
-        document.querySelector("#result").innerText = result
-    }
+    // function func1(result) {
+    //     document.querySelector("#result").innerText = result
+    // }
 
-    function func2(x, y, cb) {
+    // function func2(x, y, cb) {
 
-        setTimeout(() => {
-            sum = x + y
-            cb(sum)
-        }, 3000);
-    }
-    // console.log(func1);
-    // console.log(func1("ttt"));
+    //     setTimeout(() => {
+    //         sum = x + y
+    //         cb(sum)
+    //     }, 3000);
+    // }
+    // // console.log(func1);
+    // // console.log(func1("ttt"));
 
-    /// async
-    // const rslt = func2(20, 60)
-    // func1(rslt)
+    // /// async
+    // // const rslt = func2(20, 60)
+    // // func1(rslt)
 
-    //////  sync
-    func2(20, 60, func1)
+    // //////  sync
+    // func2(20, 60, func1)
+
+
+    // const promis = new Promise()
+
+    // promis(() => { return a})
+    //     .then((a) => { return b })
+    //     .then((b) => { })
+    //     .then(() => { })
+    //     .then(() => { })
+    //     .catch((error) => { console.log(error);})
+
+
+
+
+
 
 </script>

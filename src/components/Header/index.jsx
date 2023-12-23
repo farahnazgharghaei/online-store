@@ -71,8 +71,10 @@ function Header({ logo , totalQty}) {
             </NavLink>
           </div>
           <div className="cart ms-auto">
-            <i class="bi bi-cart3"></i>
-            <span className="bg-danger text-white p-2">{totalQty}</span>
+            <i class="bi bi-cart3 "></i>
+            <span className="bg-danger text-white p-2 bg-secondary  border-2 rounded ">
+              {totalQty}
+            </span>
           </div>
         </div>
       </div>

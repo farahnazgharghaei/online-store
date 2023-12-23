@@ -36,7 +36,16 @@ const Product = ({ id, title, image, price, handelTotalQty }) => {
             <button className="btn btn-primary me-3" onClick={addToCart}>
               Add To Cart
             </button>
-            <span>{qty}</span>
+
+            <a href="#" class="link-danger fw-bold text-decoration-none me-2 ">
+              -
+            </a>
+            <span className="bg-white fs-5 text-danger  border border-danger text-bold border-2  rounded-circle d-xxl-inline-flex p-1 bd-highlight">
+              {qty}
+            </span>
+            <a href="#" class="link-danger text-decoration-none ms-1">
+              +
+            </a>
           </div>
           <button className="btn btn-warning" onClick={changeBg}>
             change bg

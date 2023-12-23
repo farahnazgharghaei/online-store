@@ -1,0 +1,44 @@
+plaintext/html   ---> get, post
+
+
+
+api: data  application/json  application/formData
+
+lang ---> json, xml, csv, yaml
+architecture  ---> RestApi, RestFulApi, grphQl
+
+
+CRUD
+
+RestApi--->  
+get: read (all, single, search, filter, sort , limit)
+post: create, update, delete
+
+RestFulApi
+get: read (all, single, search, filter, sort , limit)
+post: create
+put: all update
+patch: some update
+delete:delete
+
+grphQl
+
+
+resource:
+backend
+
+fack
+free
+
+
+
+
+
+
+
+
+
+
+
+
+
