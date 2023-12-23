@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.css";
 
 const Product = ({ id, title, image, price, handelTotalQty }) => {
   // let qty=0;
   const [qty, setQty] = useState(0);
-  const [bg, setBg] = useState(false); // true:danger , false: white
+  // const [bg, setBg] = useState(false); // true:danger , false: white
   
   const addToCart = () => {
     // qty++
@@ -12,16 +12,26 @@ const Product = ({ id, title, image, price, handelTotalQty }) => {
     handelTotalQty();
     // console.log(qty);
   };
-  const changeBg = () => {
-    setBg(!bg);
-  };
+  // const changeBg = () => {
+  //   setBg(!bg);
+  // };
 
-  // "fff"+ fn + "ffff"
-  // ''
-  // `fff ${fn} fff`
 
-  ///  bg==true ?  bg?
-  ///  bg!=true ?  !bg?
+  // console.log("mount & update out useEffect");
+
+  // useEffect(() => {
+  //   console.log("mount & update ");
+  // });
+
+//   useEffect(() => {
+//     console.log("mount");
+//   }, []);
+
+//  useEffect(() => {
+//    console.log("mount & bg update");
+//  }, [bg]);
+
+
 
   return (
     <div className="col">
@@ -32,24 +42,28 @@ const Product = ({ id, title, image, price, handelTotalQty }) => {
           <p className="card-text">{price}</p>
         </div>
         <div className="card-footer d-flex justify-content-between align-items-center">
-          <div>
-            <button className="btn btn-primary me-3" onClick={addToCart}>
+          {qty ? (
+            <div className="w-40 qty-box bg-white shadow py-1 px-3 d-flex align-items-center justify-content-between rounded ">
+              <button className="btn link-danger fw-bold text-decoration-none  fs-5 ">
+                -
+              </button>
+              <span className="bg-white text-danger d-xxl-inline-flex p-1 bd-highlight">
+                {qty}
+              </span>
+              <button
+                className="btn link-danger text-decoration-none  fs-5"
+                onClick={addToCart}
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button className="btn btn-danger me-3" onClick={addToCart}>
               Add To Cart
             </button>
+          )}
 
-            <a href="#" class="link-danger fw-bold text-decoration-none me-2 ">
-              -
-            </a>
-            <span className="bg-white fs-5 text-danger  border border-danger text-bold border-2  rounded-circle d-xxl-inline-flex p-1 bd-highlight">
-              {qty}
-            </span>
-            <a href="#" class="link-danger text-decoration-none ms-1">
-              +
-            </a>
-          </div>
-          <button className="btn btn-warning" onClick={changeBg}>
-            change bg
-          </button>
+          {/* <button className="btn btn-warning me-3" onClick={changeBg}>change Bg</button> */}
         </div>
       </div>
     </div>

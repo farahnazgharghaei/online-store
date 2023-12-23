@@ -6,7 +6,7 @@ function Header({ logo , totalQty}) {
   return (
     <header className="p-3 text-bg-dark">
       <div className="container ">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <nav className="navbar navbar-expand-sm bg-dark navbar-dark  me-lg-auto mb-2 mb-md-0">
             <ul className="navbar-nav  nav col-12 col-lg-auto  ">
               <a
@@ -71,7 +71,7 @@ function Header({ logo , totalQty}) {
             </NavLink>
           </div>
           <div className="cart ms-auto">
-            <i class="bi bi-cart3 "></i>
+            <i className="bi bi-cart3 "></i>
             <span className="bg-danger text-white p-2 bg-secondary  border-2 rounded ">
               {totalQty}
             </span>
