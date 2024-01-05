@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 // import cart from "../../assets/images/cart.svg"
 import { BsCart3 } from "react-icons/bs";
 function Header({ logo , totalQty}) {
+  
   return (
     <header className="p-3 text-bg-dark">
       <div className="container ">

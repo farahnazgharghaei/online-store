@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "./Product";
-import { products } from "../../data";
+// import { products } from "../../data";
 
 function ProductList({ handelTotalQty }) {
 
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  //fetch, axios
-  // fetch("https://fakestoreapi.com/products")
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     setProducts(data);
-  //   })
-  //   .catch((error) => console.error(error));
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
+    fetchProducts()
+  }, [])
+  
 
-    
+  
 
   return (
     <div className="products row row-cols-1 row-cols-md-3 row-cols-lg-4 my-5 g-4">

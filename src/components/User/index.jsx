@@ -1,21 +1,33 @@
 import React from "react";
-import { users } from "../../data";
+import { useState, useEffect } from "react";
+import User from "./User";
+// import { users } from "../../data";
 
-const User = ({
-  id,
-  email,
-  username,
-  password,
-  firstname,
-  lastname,
-  phone,
-}) => {
+const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/users");
+        const data = await res.json();
+        setUsers(data);
+         console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUsers();
+    console.log(users);
+  }, []);
   return (
     <div>
       <table className="table table-striped">
         <thead>
           <tr>
             <th>User Id</th>
+            <th>Email</th>
             <th>UserName</th>
             <th>Password</th>
             <th>FirstName</th>
@@ -24,44 +36,24 @@ const User = ({
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-              <td>{user.password}</td>
-              <td>{user.name.firstname}</td>
-              <td>{user.name.lastname}</td>
-              <td>{user.phone}</td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-dark m-2 float-center btn-md"
-                >
-                  Add
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  className="btn   m-2 float-center btn-info btn-md"
-                >
-                  Edit
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-danger m-2 float-center btn-sm"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+            {users.map((item) => (
+              <User
+                //  key={item.id}
+                //  id={item.id}
+                // email={item.email}
+                // username={item.username}
+                // password={item.password}
+                // firstname={item.name.firstname}
+                // lastname={item.name.lastname}
+                // phone={item.phone}
+                {...item}
+                // handelTotalQty={handelTotalQty}
+              />
+            ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default User;
+export default UserList;

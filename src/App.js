@@ -2,18 +2,18 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./components/login";
 import SignupPage from "./pages/SignupPage";
 import UserPage from "./pages/UserPage";
 import { useState } from "react";
 
 function App() {
   const links = ["Home", "login", "Signup", "User"];
-const [totalQty, settotalQty] = useState(0)
-  
-const handelTotalQty = () => {
-  settotalQty(totalQty + 1);
-};
+  const [totalQty, settotalQty] = useState(0);
+
+  const handelTotalQty = (counter) => {
+    settotalQty(totalQty + counter);
+  };
   // //js + xml
   return (
     <BrowserRouter>
