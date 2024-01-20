@@ -26,20 +26,20 @@ const UserList = () => {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>User Id</th>
-            <th>Email</th>
-            <th>UserName</th>
-            <th>Password</th>
+            <th>User Id</th> 
             <th>FirstName</th>
             <th>LastName</th>
+            <th>UserName</th>
+            <th>Password</th>   
+            <th>Email</th>             
             <th>Phone</th>
           </tr>
         </thead>
         <tbody>
             {users.map((item) => (
               <User
-                //  key={item.id}
-                //  id={item.id}
+                key={item.id}
+                id={item.id}
                 // email={item.email}
                 // username={item.username}
                 // password={item.password}
