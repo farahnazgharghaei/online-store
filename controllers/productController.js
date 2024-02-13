@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const { param } = require("../routes/authRouter");
+// const { param } = require("../routes/authRouter");
 
 const getAllProducts = async (req, res) => {
   const productsList = await Product.find({});

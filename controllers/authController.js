@@ -1,5 +1,8 @@
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+
+const secret = "!43Far@ideh#";
 
 // Signup function
 exports.signup = async (req, res, next) => {
@@ -54,8 +57,16 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Email or Password not Corret" });
     }
 
-    // Return success message or token
-    res.status(200).json({ message: "Login successful" });
+    
+    const token= jwt.sign(
+      {
+        user:user.email
+      },
+      secret,
+      { expiresIn: "30d" }
+    );
+    
+    res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     // Handle error
     console.error(error);

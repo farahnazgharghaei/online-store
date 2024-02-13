@@ -1,4 +1,7 @@
 const express = require("express");
+const validateMiddleware = require("../middlewares/validationMiddleware");
+const productSchema = require("../utils/validation/productSchema");
+const productRouter = express.Router();
 const {
   getAllProducts,
   getProduct,
@@ -6,13 +9,13 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers/productController");
-const productRouter = express.Router();
+
 
 //api
 productRouter.get("/products", getAllProducts); //all
 productRouter.get("/products/:id", getProduct); //single
-productRouter.post("/products", createProduct); //create
-productRouter.put("/products/:id", updateProduct); //update
+productRouter.post("/products",validateMiddleware(productSchema), createProduct); //create
+productRouter.put("/products/:id",validateMiddleware(productSchema), updateProduct); //update
 productRouter.delete("/products/:id", deleteProduct); //delete
 
 module.exports = productRouter;
