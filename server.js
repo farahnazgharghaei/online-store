@@ -3,17 +3,27 @@ const authRouter = require('./routes/authRouter');
 const indexRouter = require('./routes/indexRourter');
 const productRouter = require('./routes/productRouter');
 const app = express();
+const cors= require("cors")
+const mongoose=require('mongoose');
+const errorHandler = require('./middlewares/errorMiddleware');
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/OnlineStoreDB")
+  .then(() => console.log("database connected"))
+  .catch((error) => console.log(error));
 
 
+app.use(cors());
+app.use(express.json())
 // app.get("/", index);
 // app.get("/login", login);
 // app.get("/signup", signup);
 
 
-app.use(productRouter)
-app.use(authRouter);
-app.use(indexRouter);
+
+app.use("/api",indexRouter);
  
+app.use(errorHandler)
 
 const port= 5000
 app.listen(port, ()=> {

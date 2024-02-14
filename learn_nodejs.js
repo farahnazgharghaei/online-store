@@ -16,3 +16,8 @@
 // app.listen(port, ()=> {
 //     console.log("Server is runnig on port: " + port);
 // });
+
+
+// MERN stack ----> mongodb + express + react + nodejs
+//  postgresql + express + react + nodejs
+//  mysql + express + react + nodejs

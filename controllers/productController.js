@@ -1,28 +1,87 @@
-const getAllProducts = (req, res) => {
-  // console.log(req.baseUrl);
-  // console.log(req.url);
-  // console.log(req.method);
+const Product = require("../models/Product");
+// const { param } = require("../routes/authRouter");
 
-  //   console.log(req.query); //?sort=DES&filter=Samsung&searchTerm=mobile
-//   console.log(req.params); // path variables
-  // console.log(req.body);
+const getAllProducts = async (req, res) => {
+  const productsList = await Product.find({});
 
-  return res.send("<h1>All Products</h1>");
-};
-const getProduct = (req, res) => {
-  console.log(req.params); // path variables
-  return res.send("single product");
+  return res.send(productsList);
 };
 
-const createProduct = (req, res) => {
-  return res.send("Create Product");
+const getProduct = async (req, res) => {
+  // console.log(req.params); // path variables
+  // console.log(req.query); // query params
+  const id = req.params.id;
+  console.log(id);
+
+  const product = await Product.findOne({ _id: id });
+  if (!product) {
+    return res.send({ message: "Not Found" });
+  }
+  return res.send(product);
 };
 
-const updateProduct = (req, res) => {
-  return res.send("updated Product");
+const createProduct = async (req, res, next) => {
+  try {
+    const { name, price, image, description } = req.body;
+
+    const newProduct = Product({
+      name,
+      price,
+      image,
+      description,
+    });
+
+    await newProduct.save();
+    return res.send({ message: "Create Product", newProduct });
+  } catch (error) {
+    // Handle error
+    console.error(error);
+    // res.status(500).json({ message: "Server error" });
+    next(error);
+  }
 };
-const deleteProduct = (req, res) => {
-  return res.send("deleted Product");
+
+const updateProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByIdAndUpdate(id, req.body);
+    // we cannot find any Student in database
+    if (!product) {
+      // return res.send({ message: "Not Found" });
+      return res
+        .status(404)
+        .json({ message: `cannot find any Product with ID ${id}` });
+    }
+    const updateProduct = await Product.findById(id);
+    console.log(product);
+    // return res.send(product);
+    res.status(200).json(updateProduct);
+  } catch (error) {
+    // Handle error
+    console.error(error);
+    // res.status(500).json({ message: "Server error" });
+    next(error);
+  }
+};
+
+const deleteProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByIdAndDelete(id);
+    // we cannot find any Student in database
+    if (!product) {
+      // return res.send({ message: "Not Found" });
+      return res
+        .status(404)
+        .json({ message: `cannot find any Product with ID ${id}` });
+    }
+    res.status(200).json(product);
+  } catch (error) {
+    // Handle error
+    console.error(error);
+    // res.status(500).json({ message: "Server error" });
+    next(error);
+  }
 };
 
 module.exports = {
