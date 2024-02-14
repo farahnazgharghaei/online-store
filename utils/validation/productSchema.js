@@ -5,6 +5,6 @@ const productSchema = Joi.object({
   phone: Joi.string()
     .regex(/^\\d{3}-\\d{3}-\\d{4}$/) //"123-456-7890"
     .required(),
-  description: Joi.max(5000).required(),
+  description: Joi.string().max(5000).required(),
 });
 module.exports = productSchema;
