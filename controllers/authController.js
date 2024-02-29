@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const {setToken} = require("../utils/functions/setToken")
 
-const secret = "!43Far@ideh#";
+
 
 // Signup function
 exports.signup = async (req, res, next) => {
@@ -25,11 +26,11 @@ exports.signup = async (req, res, next) => {
       password: hashedPassword,
       term
     });
-
+    token = setToken(user);
     // Save the user to the database
     await user.save();
 
-    res.status(201).json({ message: "User created successfully" });
+    res.status(201).json({ message: "User created successfully", token });
   } catch (error) {
     // Handle error
     console.error(error);
@@ -39,7 +40,7 @@ exports.signup = async (req, res, next) => {
 };
 
 // Login function
-exports.login = async (req, res) => {
+exports.login = async (req, res,next) => {
   const { email, password } = req.body;
 
   try {
@@ -56,25 +57,20 @@ exports.login = async (req, res) => {
       console.log({ message: "Invalid credentials" });
       return res.status(401).json({ message: "Email or Password not Corret" });
     }
-
+    token=setToken(user);
+ 
     
-    const token= jwt.sign(
-      {
-        user:user.email
-      },
-      secret,
-      { expiresIn: "30d" }
-    );
-    
-    res.status(200).json({ message: "Login successful", token });
+    return res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     // Handle error
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    // res.status(500).json({ message: "Server error" });
+    next(error);
   }
 };
 
-// module.exports = {
-//   login,
-//   signup,
-// };
+// module.exports = { login,signup };
+
+
+
+/// express-mongoose-error
