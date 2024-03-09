@@ -14,8 +14,8 @@ const {
 
 
 //api
-productRouter.get("/products",isLogined,isAdmin, getAllProducts); //all
-productRouter.get("/products/:id", isLogined, isAdmin, getProduct); //single
+productRouter.get("/products",isLogined, getAllProducts); //all
+productRouter.get("/products/:id", isLogined, getProduct); //single
 productRouter.post("/products",validateMiddleware(productSchema),isLogined, isAdmin, createProduct); //create
 productRouter.put("/products/:id",validateMiddleware(productSchema),isLogined, isAdmin, updateProduct); //update
 productRouter.delete("/products/:id", isLogined, isAdmin, deleteProduct); //delete
