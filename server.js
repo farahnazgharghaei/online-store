@@ -34,6 +34,10 @@ app.use("/api",indexRouter);
  
 app.use(errorHandler)
 
+console.log(process.env.ENV_MODE);
+// app.use(path.join(__dirname,"dist"))
+app.use(express.static("dist"))
+
 const port= process.env.PORT
 app.listen(port, ()=> {
     console.log("Server is runnig on port: " + port);

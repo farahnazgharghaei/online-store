@@ -5,6 +5,7 @@ const { isLogined, isAdmin } = require("../middlewares/authMiddleware");
 const { getAllUsers } = require("../controllers/userController");
 
 //api
+userRouter.get("/user", getAllUsers); //all
 userRouter.get("/users", isLogined, isAdmin, getAllUsers); //all
 
 // userRouter.get("/users/:id", getUser); //single
