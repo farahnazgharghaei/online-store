@@ -36,7 +36,7 @@ function Header({ logo , totalQty}) {
                 <NavLink
                   type=""
                   className="btn btn-dark btn-outline-placeholder"
-                  to="/user"
+                  to="/users"
                 >
                   User
                 </NavLink>
